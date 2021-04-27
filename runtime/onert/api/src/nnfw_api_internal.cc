@@ -246,7 +246,7 @@ NNFW_STATUS nnfw_session::load_model_from_modelfile(const char *model_file_path)
   return NNFW_STATUS_NO_ERROR;
 }
 
-NNFW_STATUS nnfw_session::load_model_from_nnpackage(const char *package_dir)
+NNFW_STATUS nnfw_session::load_model_from_nnpackage(const char *package_dir, const char *backend_settings)
 {
   if (!isStateInitialized())
     return NNFW_STATUS_INVALID_STATE;
@@ -323,6 +323,8 @@ NNFW_STATUS nnfw_session::load_model_from_nnpackage(const char *package_dir)
   _tracing_ctx = std::make_unique<onert::util::TracingCtx>(_subgraphs.get());
 
   _compiler = std::make_unique<onert::compiler::Compiler>(_subgraphs, _tracing_ctx.get());
+  if (backend_settings != NULL)
+    _compiler->set_backend_from_str(backend_settings);
 
   _state = State::MODEL_LOADED;
   return NNFW_STATUS_NO_ERROR;

@@ -101,6 +101,8 @@ public:
    * @brief   Allow to compute float32 using float16 data type
    */
   void enableToFp16();
+  
+  void set_backend_from_str(const char *backend_settings);
 
 private:
   void checkProfilerConditions();

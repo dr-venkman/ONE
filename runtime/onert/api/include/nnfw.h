@@ -211,7 +211,7 @@ NNFW_STATUS nnfw_close_session(nnfw_session *session);
  *
  * @return    @c NNFW_STATUS_NO_ERROR if successful
  */
-NNFW_STATUS nnfw_load_model_from_file(nnfw_session *session, const char *package_file_path);
+NNFW_STATUS nnfw_load_model_from_file(nnfw_session *session, const char *package_file_path, const char *backend_settings=NULL);
 
 /**
  * @brief     Apply i-th input's tensor info to resize input tensor

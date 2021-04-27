@@ -87,10 +87,10 @@ NNFW_STATUS nnfw_close_session(nnfw_session *session)
  *
  * @return NNFW_STATUS_NO_ERROR if successful
  */
-NNFW_STATUS nnfw_load_model_from_file(nnfw_session *session, const char *pacakge_file_path)
+NNFW_STATUS nnfw_load_model_from_file(nnfw_session *session, const char *pacakge_file_path, const char *backend_settings)
 {
   NNFW_RETURN_ERROR_IF_NULL(session);
-  return session->load_model_from_nnpackage(pacakge_file_path);
+  return session->load_model_from_nnpackage(pacakge_file_path, backend_settings);
 }
 
 /*
